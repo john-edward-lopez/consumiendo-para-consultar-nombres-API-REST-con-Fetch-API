@@ -34,30 +34,17 @@ function cargarNombres(e) {
 
      // Código de FETCH API AQUI
      fetch(url)
-           .then(function(res){
-                  
-                    return res.json();
-           })
-           .then(function(data){
-
+           .then(res => res.json())
+           .then( data => {
               let html = '<h2> Nombres Generado </h2>';
-
               html +=`<ul class = "lista"> `;
-
-              data.forEach(function(nombre){
-
-                html +=`<li>${nombre.name}</li>`;
-
-              });
+             
+              data.forEach(nombre =>html +=`<li>${nombre.name}</li>`);
 
               html +=`</ul>`;
 
               document.querySelector('#resultado').innerHTML = html;
-           }).catch(function error(){
-
-
-               console.log(error);
-           })
-
-
+            }).catch(function error(){
+                 console.log(error);
+            })
 }
